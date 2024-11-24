@@ -44,6 +44,10 @@ export default (env: IEnv) => {
         },
         resolve: {
             extensions: ['.tsx', '.ts', '.js'],
+            preferAbsolute: true,
+            modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+            mainFiles: ['index'],
+            alias: {},
         },
         output: {
             path: path.resolve(__dirname, 'dist'),

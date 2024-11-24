@@ -1,0 +1,15 @@
+@use "reset";
+@use "variables";
+
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    background: var(--app-bg-color);
+    color: var(--primary-color);
+    font: var(--font-m);
+    display: flex;
+}
+
+.content {
+    flex-grow: 1;
+}

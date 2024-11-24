@@ -1,11 +1,12 @@
 import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import webpackDevServer from 'webpack-dev-server';
 
 const config: webpack.Configuration = {
     mode: 'development',
     devtool: 'inline-source-map',
-    entry: path.resolve(__dirname, 'src', 'index.ts'),
+    entry: path.resolve(__dirname, 'src', 'index.tsx'),
     module: {
         rules: [
             {
@@ -27,7 +28,11 @@ const config: webpack.Configuration = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'public', 'index.html'),
         })
-    ]
+    ],
+    devServer: {
+        port: 3000,
+        open: true
+    }
 };
 
 export default config;

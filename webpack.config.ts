@@ -18,6 +18,10 @@ export default (env: IEnv) => {
         module: {
             rules: [
                 {
+                    test: /\.svg$/,
+                    use: ['@svgr/webpack'],
+                },
+                {
                     test: /\.tsx?$/,
                     use: 'ts-loader',
                     exclude: /node_modules/,

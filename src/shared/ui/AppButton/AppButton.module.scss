@@ -16,7 +16,7 @@
 .primary {
     color: var(--primary-color);
     border: none;
-    background: #0092F2;
+    background: var(--highlight-color);
     border: none;
 
     &:active {

@@ -1,3 +1,4 @@
+import { classNames } from 'shared/lib/classNames'
 import cls from './AppHeader.module.scss'
 import { ReactNode } from 'react'
 
@@ -13,9 +14,7 @@ const AppHeader = (props: AppHeaderProps) => {
     } = props
 
     return (
-        <div
-            className={`${cls.AppHeader} ${className}`}
-        >
+        <div className={classNames(cls.AppHeader, {}, [className])}>
             {children}
         </div>
     )

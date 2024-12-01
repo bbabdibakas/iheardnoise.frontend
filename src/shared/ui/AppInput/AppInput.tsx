@@ -1,5 +1,6 @@
 import { ChangeEvent, InputHTMLAttributes } from "react"
 import cls from './AppInput.module.scss'
+import { classNames } from "shared/lib/classNames"
 
 interface AppInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'> {
     className?: string
@@ -25,7 +26,7 @@ const AppInput = (props: AppInputProps) => {
     return (
         <div className={cls.wrapper}>
             <input
-                className={`${cls.AppInput} ${className}`}
+                className={classNames(cls.AppInput, {}, [className])}
                 value={value}
                 onChange={onChangeHandler}
                 placeholder={placeholder}

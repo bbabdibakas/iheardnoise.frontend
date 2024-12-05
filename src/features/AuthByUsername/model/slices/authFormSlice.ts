@@ -18,6 +18,10 @@ export const authFormSlice = createSlice({
         setPassword: (state, action: PayloadAction<string>) => {
             state.password = action.payload;
         },
+        resetAuthForm: (state) => {
+            state.username = ''
+            state.password = ''
+        },
     },
     extraReducers: (builder) => {
         builder

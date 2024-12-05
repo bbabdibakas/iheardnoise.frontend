@@ -23,14 +23,16 @@ const MainPage = () => {
     }, [dispatch]);
 
     if (userData) {
-        <div>
-            <AppHeader>
-                <AppButton onClick={onLogout} theme={AppButtonTheme.PRIMARY}>
-                    Logout
-                </AppButton>
-            </AppHeader>
-            MainPage
-        </div>
+        return (
+            <div>
+                <AppHeader>
+                    <AppButton onClick={onLogout} theme={AppButtonTheme.PRIMARY}>
+                        Logout
+                    </AppButton>
+                </AppHeader>
+                MainPage
+            </div>
+        )
     }
 
     return (

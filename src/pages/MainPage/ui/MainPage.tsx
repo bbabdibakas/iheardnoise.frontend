@@ -36,7 +36,7 @@ const MainPage = () => {
     }
 
     return (
-        <div>
+        <div className="content">
             <AppHeader>
                 <AppButton onClick={onModalOpen} theme={AppButtonTheme.PRIMARY}>
                     Login
@@ -47,4 +47,5 @@ const MainPage = () => {
         </div>
     )
 }
+
 export default MainPage

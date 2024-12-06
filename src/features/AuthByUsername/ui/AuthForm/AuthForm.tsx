@@ -10,6 +10,7 @@ import { getAuthFormIsLoading } from '../../model/selectors/getAuthFormIsLoading
 import { getAuthFormIsErrorMessage } from '../../model/selectors/getAuthFormIsErrorMessage'
 import { authByUsername } from '../../model/services/authByUsername'
 import { useAppDispatch } from 'shared/lib/useAppDispatch'
+import AppLoader from 'shared/ui/AppLoader/AppLoader'
 
 interface AuthFormProps {
     onSuccess: () => void
@@ -60,7 +61,7 @@ const AuthForm = ({ onSuccess }: AuthFormProps) => {
                 onClick={onLogin}
             >
                 Login
-                {isLoading && 'Loading..'}
+                {isLoading && <AppLoader className={cls.spinner} />}
             </AppButton>
         </div>
     )

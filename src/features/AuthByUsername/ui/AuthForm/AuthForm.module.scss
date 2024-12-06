@@ -16,3 +16,9 @@
 .button {
     align-self: flex-end;
 }
+
+.spinner {
+    margin-left: 8px;
+    border-color: var(--hover-color);
+    border-bottom-color: var(--primary-color) !important; 
+}

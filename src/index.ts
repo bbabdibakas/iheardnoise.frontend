@@ -1,1 +1,0 @@
-document.getElementById('root').innerHTML = '<div>Hello, World!</div>'

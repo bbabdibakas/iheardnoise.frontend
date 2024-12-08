@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom"
 import { Suspense } from "react"
-import { MainPageAsync } from "./pages/MainPage.async"
-import { ProfilePageAsync } from "./pages/ProfilePage.async"
-import Sidebar from "./components/Sidebar/Sidebar"
+import { MainPage } from "pages/MainPage"
+import { ProfilePage } from "pages/ProfilePage"
+import { Sidebar } from "widgets/Sidebar"
 
 const App = () => {
     return (
@@ -10,8 +10,8 @@ const App = () => {
             <Sidebar />
             <Suspense fallback={'Loading...'}>
                 <Routes>
-                    <Route path="/" element={<MainPageAsync />} />
-                    <Route path="/profile" element={<ProfilePageAsync />} />
+                    <Route path="/" element={<MainPage />} />
+                    <Route path="/profile" element={<ProfilePage />} />
                 </Routes>
             </Suspense>
         </div>

@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "start": "webpack serve"
+    "build:dev": "webpack --env mode=development",
+    "build:prod": "webpack --env mode=production",
+    "start": "webpack serve --env mode=development"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +17,12 @@
     "@types/react-dom": "^19.0.1",
     "@types/react-router-dom": "^5.3.3",
     "@types/webpack": "^5.28.5",
+    "css-loader": "^6.11.0",
     "html-webpack-plugin": "^5.6.3",
+    "mini-css-extract-plugin": "^2.9.2",
+    "sass": "^1.82.0",
+    "sass-loader": "^16.0.4",
+    "style-loader": "^4.0.0",
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2",

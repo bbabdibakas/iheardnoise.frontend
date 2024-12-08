@@ -6,7 +6,7 @@ import { ProfilePageAsync } from "./pages/ProfilePage.async"
 
 const App = () => {
     return (
-        <div>
+        <div className="wrapper">
             <Link to={'/'}>main</Link>
             <Link to={'/profile'}>profile</Link>
             <Suspense fallback={'Loading...'}>

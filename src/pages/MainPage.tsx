@@ -1,6 +1,6 @@
 const MainPage = () => {
     return (
-        <div>
+        <div className="content">
             MainPage
         </div>
     )

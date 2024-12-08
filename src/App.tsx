@@ -1,17 +1,20 @@
 import { Route, Routes } from "react-router-dom"
-import MainPage from "./pages/MainPage"
-import ProfilePage from "./pages/ProfilePage"
 import { Link } from "react-router-dom"
+import { Suspense } from "react"
+import { MainPageAsync } from "./pages/MainPage.async"
+import { ProfilePageAsync } from "./pages/ProfilePage.async"
 
 const App = () => {
     return (
         <div>
             <Link to={'/'}>main</Link>
             <Link to={'/profile'}>profile</Link>
-            <Routes>
-                <Route path="/" element={<MainPage />} />
-                <Route path="/profile" element={<ProfilePage />} />
-            </Routes>
+            <Suspense fallback={'Loading...'}>
+                <Routes>
+                    <Route path="/" element={<MainPageAsync />} />
+                    <Route path="/profile" element={<ProfilePageAsync />} />
+                </Routes>
+            </Suspense>
         </div>
     )
 }

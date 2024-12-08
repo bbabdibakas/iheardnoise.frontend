@@ -8,18 +8,18 @@ import { useLocation } from 'react-router-dom'
 
 const Sidebar = () => {
     const location = useLocation()
-    
+
     return (
         <div className={cls.Sidebar}>
             <AppLink to="/" className={cls.link}>
                 {location.pathname === "/" ? <MainPageActiveIcon className={cls.icon} /> : <MainPageIcon className={cls.icon} />}
-                <div className={location.pathname === "/" && cls.label}>
+                <div className={location.pathname === "/" ? cls.label : undefined}>
                     Main
                 </div>
             </AppLink>
             <AppLink to="/profile" className={cls.link}>
                 {location.pathname === "/profile" ? <ProfilePageActiveIcon className={cls.icon} /> : <ProfilePageIcon className={cls.icon} />}
-                <div className={location.pathname === "/profile" && cls.label}>
+                <div className={location.pathname === "/profile" ? cls.label : undefined}>
                     Profile
                 </div>
             </AppLink>

@@ -1,0 +1,23 @@
+.Sidebar {
+    width: 300px;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    padding: 8px 12px 20px 12px;
+    border-right: 1px solid var(--hover-color);
+}
+
+.link {
+    padding: 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+
+    &:active {
+        color: var(--secondary-color);
+    }
+
+    &:hover {
+        background: var(--hover-color);
+    }
+}

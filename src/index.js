@@ -1,1 +1,1 @@
-console.log('Hello, World!')
+document.getElementById('root').innerHTML = '<div>Hello, World!</div>'

@@ -13,7 +13,7 @@ const AuthModal = (props: AuthModalProps) => {
     } = props
     return (
         <AppModal isOpen={isOpen} onClose={onClose}>
-            <AuthForm />
+            <AuthForm onSuccess={onClose}  />
         </AppModal>
     )
 }

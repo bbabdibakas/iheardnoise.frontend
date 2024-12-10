@@ -4,9 +4,19 @@
     cursor: pointer;
     padding: 8px 16px;
     border-radius: 8px;
+}
+
+.clear {
     color: var(--primary-color);
     border: none;
-    background: #0092F2;
+    background: none;
+    border: none;
+}
+
+.primary {
+    color: var(--primary-color);
+    border: none;
+    background: var(--highlight-color);
     border: none;
 
     &:active {
@@ -14,6 +24,6 @@
     }
 
     &:hover {
-        background: #1A77F2;
+        background: var(--hover-highlight-color);
     }
 }

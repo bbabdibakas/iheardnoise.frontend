@@ -1,11 +1,19 @@
 import { Route, Routes } from "react-router-dom"
-import { Suspense } from "react"
+import { Suspense, useEffect } from "react"
 import { MainPage } from "pages/MainPage"
 import { ProfilePage } from "pages/ProfilePage"
 import { Sidebar } from "widgets/Sidebar"
 import AppPageLoader from "shared/ui/AppPageLoader/AppPageLoader"
+import { userActions } from "entities/User"
+import { useDispatch } from "react-redux"
 
 const App = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(userActions.initAuthData())
+    }, [dispatch])
+
     return (
         <div className="wrapper">
             <Sidebar />

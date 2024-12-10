@@ -1,12 +1,14 @@
-import { useState } from "react"
+import { getUserData, userActions } from "entities/User"
+import { AuthModal } from "features/AuthByUsername"
+import { useCallback, useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
 import AppButton, { AppButtonTheme } from "shared/ui/AppButton/AppButton"
 import AppHeader from "shared/ui/AppHeader/AppHeader"
-import AppInput from "shared/ui/AppInput/AppInput"
-import { AppModal } from "shared/ui/AppModal/AppModal"
 
 const MainPage = () => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
-    const [username, setUsername] = useState<string>('')
+    const userData = useSelector(getUserData);
+    const dispatch = useDispatch();
 
     const onModalOpen = () => {
         setIsModalOpen(true)
@@ -16,8 +18,21 @@ const MainPage = () => {
         setIsModalOpen(false)
     }
 
-    const onSetUsername = (value: string) => {
-        setUsername(value)
+    const onLogout = useCallback(() => {
+        dispatch(userActions.resetUserData());
+    }, [dispatch]);
+
+    if (userData) {
+        return (
+            <div className="content">
+                <AppHeader>
+                    <AppButton onClick={onLogout} theme={AppButtonTheme.PRIMARY}>
+                        Logout
+                    </AppButton>
+                </AppHeader>
+                MainPage
+            </div>
+        )
     }
 
     return (
@@ -28,9 +43,7 @@ const MainPage = () => {
                 </AppButton>
             </AppHeader>
             MainPage
-            <AppModal isOpen={isModalOpen} onClose={onModalClose}>
-                <AppInput value={username} onChange={onSetUsername} placeholder="Username"/>
-            </AppModal>
+            <AuthModal isOpen={isModalOpen} onClose={onModalClose} />
         </div>
     )
 }

@@ -1,0 +1,22 @@
+.AuthForm {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.AuthForm>* {
+    margin-top: 16px;
+}
+
+.title {
+    font: var(--font-l);
+    font-weight: 800;
+}
+
+.button {
+    align-self: flex-end;
+}
+
+.spinner {
+    margin-left: 8px;
+}

@@ -1,3 +1,3 @@
 import { RootState } from "app/providers/StoreProvider";
 
-export const getAuthFormIsLoading = (state: RootState) => state.authForm.isLoading
+export const getAuthFormIsLoading = (state: RootState) => state.authForm?.isLoading || false

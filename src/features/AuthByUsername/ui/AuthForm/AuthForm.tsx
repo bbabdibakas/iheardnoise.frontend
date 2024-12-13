@@ -4,13 +4,18 @@ import AppInput from 'shared/ui/AppInput/AppInput'
 import { useSelector } from 'react-redux'
 import { useCallback } from 'react'
 import { getAuthFormPassword } from '../../model/selectors/getAuthFormPassword'
-import { authFormActions } from '../../model/slices/authFormSlice'
+import { authFormActions, authFormReducer } from '../../model/slices/authFormSlice'
 import { getAuthFormUsername } from '../../model/selectors/getAuthFormUsername'
 import { getAuthFormIsLoading } from '../../model/selectors/getAuthFormIsLoading'
 import { getAuthFormIsErrorMessage } from '../../model/selectors/getAuthFormIsErrorMessage'
 import { authByUsername } from '../../model/services/authByUsername'
 import { useAppDispatch } from 'shared/lib/useAppDispatch'
 import AppLoader from 'shared/ui/AppLoader/AppLoader'
+import { DynamicModuleLoader, ReducersList } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader'
+
+const initialReducers: ReducersList = {
+    authForm: authFormReducer
+}
 
 interface AuthFormProps {
     onSuccess: () => void
@@ -39,32 +44,37 @@ const AuthForm = ({ onSuccess }: AuthFormProps) => {
     }, [dispatch, username, password])
 
     return (
-        <div className={cls.AuthForm}>
-            <div className={cls.title}>
-                Welcome back to iheardnoise
+        <DynamicModuleLoader
+            removeAfterUnmount
+            reducers={initialReducers}
+        >
+            <div className={cls.AuthForm}>
+                <div className={cls.title}>
+                    Welcome back to iheardnoise
+                </div>
+                <div className={cls.isErrorMessage}>
+                    {isErrorMessage}
+                </div>
+                <AppInput
+                    value={username}
+                    onChange={onChangeUsername}
+                    placeholder="Username"
+                />
+                <AppInput
+                    value={password}
+                    onChange={onChangePassword}
+                    placeholder="Password"
+                />
+                <AppButton
+                    theme={AppButtonTheme.PRIMARY}
+                    className={cls.button}
+                    onClick={onLogin}
+                >
+                    Login
+                    {isLoading && <AppLoader className={cls.spinner} />}
+                </AppButton>
             </div>
-            <div className={cls.isErrorMessage}>
-                {isErrorMessage}
-            </div>
-            <AppInput
-                value={username}
-                onChange={onChangeUsername}
-                placeholder="Username"
-            />
-            <AppInput
-                value={password}
-                onChange={onChangePassword}
-                placeholder="Password"
-            />
-            <AppButton
-                theme={AppButtonTheme.PRIMARY}
-                className={cls.button}
-                onClick={onLogin}
-            >
-                Login
-                {isLoading && <AppLoader className={cls.spinner} />}
-            </AppButton>
-        </div>
+        </DynamicModuleLoader>
     )
 }
 

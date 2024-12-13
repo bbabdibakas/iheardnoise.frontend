@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { User, userActions } from 'entities/User';
-import { authFormActions } from '../slices/authFormSlice';
 
 interface AuthByUsernameProps {
     username: string;
@@ -19,7 +18,6 @@ export const authByUsername = createAsyncThunk<User, AuthByUsernameProps, { reje
             }
 
             thunkAPI.dispatch(userActions.setUserData(response.data))
-            thunkAPI.dispatch(authFormActions.resetAuthForm())
 
             return response.data;
         } catch (e) {

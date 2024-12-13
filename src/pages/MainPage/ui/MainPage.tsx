@@ -43,7 +43,7 @@ const MainPage = () => {
                 </AppButton>
             </AppHeader>
             MainPage
-            <AuthModal isOpen={isModalOpen} onClose={onModalClose} />
+            {isModalOpen && <AuthModal isOpen={isModalOpen} onClose={onModalClose} />}
         </div>
     )
 }

@@ -1,5 +1,7 @@
 import { AppModal } from "shared/ui/AppModal/AppModal"
-import AuthForm from "../AuthForm/AuthForm"
+import { Suspense } from "react"
+import AppPageLoader from "shared/ui/AppPageLoader/AppPageLoader"
+import { AuthFormAsync } from "../AuthForm/AuthForm.async"
 
 interface AuthModalProps {
     isOpen: boolean
@@ -11,9 +13,12 @@ const AuthModal = (props: AuthModalProps) => {
         isOpen,
         onClose
     } = props
+
     return (
         <AppModal isOpen={isOpen} onClose={onClose}>
-            <AuthForm onSuccess={onClose}  />
+            <Suspense fallback={<AppPageLoader />}>
+                <AuthFormAsync onSuccess={onClose} />
+            </Suspense>
         </AppModal>
     )
 }

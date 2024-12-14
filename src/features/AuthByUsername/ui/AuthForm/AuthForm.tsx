@@ -17,7 +17,7 @@ const initialReducers: ReducersList = {
     authForm: authFormReducer
 }
 
-interface AuthFormProps {
+export interface AuthFormProps {
     onSuccess: () => void
 }
 

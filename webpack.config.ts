@@ -1,6 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import webpackDevServer from 'webpack-dev-server';
 
 const config: webpack.Configuration = {
     mode: 'development',
@@ -16,7 +17,7 @@ const config: webpack.Configuration = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
     },
-    entry: path.resolve(__dirname, 'src', 'index.ts'),
+    entry: path.resolve(__dirname, 'src', 'index.tsx'),
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: '[name].[contenthash:8].js',
@@ -27,7 +28,11 @@ const config: webpack.Configuration = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'public', 'index.html'),
         })
-    ]
+    ],
+    devServer: {
+        port: 3000,
+        open: true,
+    }
 };
 
 export default config;

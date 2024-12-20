@@ -12,6 +12,7 @@
   "devDependencies": {
     "@types/node": "^22.10.2",
     "@types/webpack": "^5.28.5",
+    "html-webpack-plugin": "^5.6.3",
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2",

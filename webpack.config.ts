@@ -1,5 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const config: webpack.Configuration = {
     mode: 'development',
@@ -22,6 +23,11 @@ const config: webpack.Configuration = {
         clean: true
     },
     devtool: 'inline-source-map',
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, 'public', 'index.html'),
+        })
+    ]
 };
 
 export default config;

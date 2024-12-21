@@ -1,0 +1,11 @@
+:root {
+    --font-family-main: Sans-serif;
+    --font-size: 16px;
+    --font-line: 24px;
+    --font: var(--font-size) / var(--font-line) var(--font-family-main);
+
+    //colors
+    --app-bg-color: #000;
+    --primary-color: #fff;
+    --border-color: #121212;
+}

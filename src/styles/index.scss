@@ -1,0 +1,24 @@
+@use "reset";
+@use "variables";
+
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    background: var(--app-bg-color);
+    color: var(--primary-color);
+    font: var(--font);
+    display: flex;
+}
+
+.sidebar {
+    width: 300px;
+    border-right: 1px solid var(--border-color);
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+.page {
+    padding: 14px;
+    flex-grow: 1;
+}

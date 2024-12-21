@@ -1,6 +1,8 @@
+import * as styles from './App.modules.scss'
+
 const App = () => {
     return (
-        <div>
+        <div className={styles.App}>
             Hello, World!
         </div>
     )

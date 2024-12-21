@@ -9,7 +9,12 @@
         "allowJs": true,
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "paths": {
+            "*": [
+                "./src/*"
+            ]
+        },
     },
     "ts-node": {
         "compilerOptions": {

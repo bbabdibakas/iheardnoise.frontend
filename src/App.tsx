@@ -1,6 +1,6 @@
 import { Link, Route, Routes } from 'react-router'
-import MainPage from './pages/MainPage'
-import ProfilePage from './pages/ProfilePage'
+import { MainPage } from 'pages/MainPage'
+import { ProfilePage } from 'pages/ProfilePage'
 
 const App = () => {
     return (

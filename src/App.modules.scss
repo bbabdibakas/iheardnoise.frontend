@@ -1,4 +1,11 @@
-.App {
-    background: black;
-    color: white;
+.wrapper {
+    display: flex;
+}
+
+.sidebar {
+    width: 300px;
+}
+
+.page {
+    flex-grow: 1;
 }

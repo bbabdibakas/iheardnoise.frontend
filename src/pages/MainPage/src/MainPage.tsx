@@ -1,4 +1,4 @@
-import { AppButton, AppButtonTheme } from "shared/ui/AppButton"
+import { AppButton, AppButtonTheme } from "shared/ui/AppButton/AppButton"
 
 const MainPage = () => {
 
@@ -8,9 +8,6 @@ const MainPage = () => {
 
     return (
         <div>
-            <AppButton onClick={testButton}>
-                Login
-            </AppButton>
             <AppButton theme={AppButtonTheme.PRIMARY} onClick={testButton}>
                 Login
             </AppButton>

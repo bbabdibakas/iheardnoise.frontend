@@ -1,8 +1,12 @@
-import { Link, Route, Routes } from 'react-router'
+import { Link, Route, Routes, useLocation } from 'react-router'
 import { MainPage } from 'pages/MainPage'
 import { ProfilePage } from 'pages/ProfilePage'
+import { Suspense } from 'react'
+import AppPageLoader from 'shared/ui/AppPageLoader/AppPageLoader'
 
 const App = () => {
+    const location = useLocation()
+
     return (
         <div className={'wrapper'}>
             <div className={'sidebar'}>
@@ -10,10 +14,12 @@ const App = () => {
                 <Link to={'/profile'}>profile</Link>
             </div>
             <div className={'page'}>
-                <Routes>
-                    <Route path='/' element={<MainPage />} />
-                    <Route path='/profile' element={<ProfilePage />} />
-                </Routes>
+                <Suspense fallback={<AppPageLoader />} key={location.key}>
+                    <Routes>
+                        <Route path='/' element={<MainPage />} />
+                        <Route path='/profile' element={<ProfilePage />} />
+                    </Routes>
+                </Suspense>
             </div>
         </div>
     )

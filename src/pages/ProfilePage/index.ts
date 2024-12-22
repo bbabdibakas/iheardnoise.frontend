@@ -1,5 +1,5 @@
-import ProfilePage from "./src/ProfilePage";
+import { ProfilePageAsync } from "./src/ProfilePage.async";
 
 export {
-    ProfilePage
+    ProfilePageAsync as ProfilePage
 }

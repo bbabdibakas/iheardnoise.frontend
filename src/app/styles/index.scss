@@ -8,17 +8,17 @@
     color: var(--primary-color);
     font: var(--font);
     display: flex;
-}
-
-.sidebar {
-    width: 300px;
-    border-right: 1px solid var(--border-color);
-    padding: 14px;
-    display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .page {
-    padding: 14px;
+    display: flex;
+    width: 1024px;
+    height: 100%;
+}
+
+.content {
+    padding: 8px;
     flex-grow: 1;
 }

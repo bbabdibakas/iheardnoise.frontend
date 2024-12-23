@@ -25,7 +25,7 @@ export const AppButton = (props: AppButtonProps) => {
             className={`${styles.AppButton} ${styles[theme]} ${className}`}
             {...otherProps}
         >
-            ProfilePage
+            {children}
         </button>
     )
 }

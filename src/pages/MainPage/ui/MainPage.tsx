@@ -1,3 +1,4 @@
+import { Counter } from "entity/Counter"
 import { useState } from "react"
 import { AppButton, AppButtonTheme } from "shared/ui/AppButton/AppButton"
 import AppHeader from "shared/ui/AppHeader/AppHeader"
@@ -33,10 +34,11 @@ const MainPage = () => {
                 </AppButton>
             </AppHeader>
             <AppModal isOpen={isModalOpen} onClose={onModalClose}>
-                <AppInput value={username} placeholder="username" onChange={onChangeUsername}/>
-                <AppInput value={password} placeholder="password" onChange={onChangePassword}/>
+                <AppInput value={username} placeholder="username" onChange={onChangeUsername} />
+                <AppInput value={password} placeholder="password" onChange={onChangePassword} />
             </AppModal>
             MainPage
+            <Counter />
         </div>
     )
 }

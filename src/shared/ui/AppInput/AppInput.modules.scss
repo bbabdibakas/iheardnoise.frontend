@@ -1,0 +1,43 @@
+.wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.AppInput {
+    width: 100%;
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-sizing: border-box;
+    font: var(--font-m);
+    padding: 4px 8px;
+    color: var(--primary-color);
+    outline: none;
+}
+
+.AppInput::placeholder {
+    opacity: 0;
+}
+
+.AppInput:not(:placeholder-shown)+.placeholder {
+    font: var(--font-s);
+    top: 16px;
+    color: var(--highlight-color);
+    background: var(--app-bg-color);
+}
+
+.AppInput:not(:placeholder-shown) {
+    padding: 20px 8px 4px;
+    border-color: var(--highlight-color);
+}
+
+.placeholder {
+    pointer-events: none;
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font: var(--font-m);
+    transition: all 0.2s ease;
+    color: var(--secondary-color);
+}

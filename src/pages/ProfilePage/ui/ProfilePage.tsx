@@ -1,4 +1,4 @@
-import { Counter } from "entity/Counter"
+import { Counter } from "entities/Counter"
 
 const ProfilePage = () => {
     return (

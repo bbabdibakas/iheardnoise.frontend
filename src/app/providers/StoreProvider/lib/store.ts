@@ -17,3 +17,5 @@ export function createReduxStore(initialState?: RootState) {
 
     return store;
 }
+
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];

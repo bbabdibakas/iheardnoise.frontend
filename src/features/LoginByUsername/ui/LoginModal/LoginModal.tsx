@@ -14,7 +14,7 @@ const LoginModal = (props: LoginModalProps) => {
 
     return (
         <AppModal isOpen={isOpen} onClose={onClose}>
-            <LoginForm />
+            <LoginForm onSuccess={onClose}/>
         </AppModal>
     )
 }

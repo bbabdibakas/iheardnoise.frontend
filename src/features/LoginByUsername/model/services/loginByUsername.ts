@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { userActions } from 'entities/User';
+import { loginActions } from '../slice/loginSlice';
 
 interface User {
     id: string
@@ -21,6 +23,9 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, { re
                 throw new Error();
             }
 
+            thunkAPI.dispatch(userActions.setUserData(response.data))
+            thunkAPI.dispatch(loginActions.resetState())
+            
             return response.data;
         } catch (error) {
 

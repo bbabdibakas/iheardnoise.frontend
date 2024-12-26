@@ -1,34 +1,42 @@
 import { getLoginPassword } from "../../model/selectors/getLoginPassword"
 import { getLoginUsername } from "../../model/selectors/getLoginUsername"
 import { loginActions } from "../../model/slice/loginSlice"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import AppInput from "shared/ui/AppInput/AppInput"
 import * as styles from './LoginForm.modules.scss'
 import { getLoginIsLoading } from "../../model/selectors/getLoginIsLoading"
 import { getLoginErrorMessage } from "../../model/selectors/getLoginErrorMessage"
 import { AppButton, AppButtonTheme } from "shared/ui/AppButton/AppButton"
 import { loginByUsername } from "../../model/services/loginByUsername"
-import { AppDispatch } from "app/providers/StoreProvider"
 import AppPageLoader from "shared/ui/AppPageLoader/AppPageLoader"
+import { useAppDispatch } from "shared/lib/useAppDispatch/useAppDispatch"
+import { useCallback } from "react"
 
-const LoginForm = () => {
-    const dispatch = useDispatch<AppDispatch>()
+interface LoginFormProps {
+    onSuccess: () => void
+}
+
+const LoginForm = ({ onSuccess }: LoginFormProps) => {
+    const dispatch = useAppDispatch()
     const username = useSelector(getLoginUsername)
     const password = useSelector(getLoginPassword)
     const isLoading = useSelector(getLoginIsLoading)
     const errorMessage = useSelector(getLoginErrorMessage)
 
-    const onChangeUsername = (value: string) => {
+    const onChangeUsername = useCallback((value: string) => {
         dispatch(loginActions.setUsername(value))
-    }
+    }, [dispatch])
 
-    const onChangePassword = (value: string) => {
+    const onChangePassword = useCallback((value: string) => {
         dispatch(loginActions.setPassword(value))
-    }
+    }, [dispatch])
 
-    const onLogin = () => {
-        dispatch(loginByUsername({ username, password }))
-    }
+    const onLogin = useCallback(async () => {
+        const result = await dispatch(loginByUsername({ username, password }))
+        if (result.meta.requestStatus === 'fulfilled') {
+            onSuccess()
+        }
+    }, [dispatch, username, password, onSuccess])
 
     let content
 
@@ -42,6 +50,9 @@ const LoginForm = () => {
         content = (
             <div className={styles.LoginForm}>
                 {errorMessage}
+                <div>
+                    Welcome back to iheardnoise
+                </div>
                 <AppInput
                     value={username}
                     onChange={onChangeUsername}
@@ -55,6 +66,7 @@ const LoginForm = () => {
                 <AppButton
                     onClick={onLogin}
                     theme={AppButtonTheme.PRIMARY}
+                    className={styles.button}
                 >
                     Login
                 </AppButton>

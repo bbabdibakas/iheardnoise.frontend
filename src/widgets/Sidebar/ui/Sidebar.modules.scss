@@ -16,9 +16,20 @@
 
     &:active {
         color: var(--secondary-color);
+
+        .icon { 
+            transform: scale(0.9);
+            fill: var(--secondary-color);
+        }
     }
 
     &:hover {
         background: var(--border-color);
     }
+}
+
+.icon {
+    transition: transform 0.1s ease;
+    fill: var(--primary-color);
+    margin-right: 12px;
 }

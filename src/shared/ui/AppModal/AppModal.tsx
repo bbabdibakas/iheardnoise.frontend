@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import { AppPortal } from 'shared/ui/AppPortal/AppPortal';
 import AppHeader from 'shared/ui/AppHeader/AppHeader';
 import { AppButton } from '../AppButton/AppButton';
+import CloseIcon from 'shared/assets/icons/Close.svg'
 
 interface AppModalProps {
     className?: string;
@@ -30,7 +31,7 @@ export const AppModal = (props: AppModalProps) => {
                     <div className={styles.content}>
                         <AppHeader>
                             <AppButton onClick={onCloseHandler} className={styles.button}>
-                                close
+                                <CloseIcon className={styles.icon} />
                             </AppButton>
                         </AppHeader>
                         <div className={styles.body}>

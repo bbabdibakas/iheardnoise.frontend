@@ -30,9 +30,7 @@
 }
 
 .button {
-    display: flex;
-    align-items: center;
-    padding: 12px;
+    padding: 12px !important;
 
     &:active {
         color: var(--secondary-color);
@@ -41,10 +39,10 @@
             transform: scale(0.9);
             fill: var(--secondary-color);
         }
+    }
 
-        &:hover {
-            background: var(--border-color);
-        }
+    &:hover {
+        background: var(--border-color);
     }
 }
 

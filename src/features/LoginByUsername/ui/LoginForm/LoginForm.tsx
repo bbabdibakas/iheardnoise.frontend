@@ -1,6 +1,6 @@
 import { getLoginPassword } from "../../model/selectors/getLoginPassword"
 import { getLoginUsername } from "../../model/selectors/getLoginUsername"
-import { loginActions } from "../../model/slice/loginSlice"
+import { loginActions, loginReducer } from "../../model/slice/loginSlice"
 import { useSelector } from "react-redux"
 import AppInput from "shared/ui/AppInput/AppInput"
 import * as styles from './LoginForm.modules.scss'
@@ -11,8 +11,13 @@ import { loginByUsername } from "../../model/services/loginByUsername"
 import AppPageLoader from "shared/ui/AppPageLoader/AppPageLoader"
 import { useAppDispatch } from "shared/lib/useAppDispatch/useAppDispatch"
 import { useCallback } from "react"
+import { DynamicModuleLoader, ReducersList } from "shared/lib/DynamicModuleLoader/DynamicModuleLoader"
 
-interface LoginFormProps {
+const initialReducers: ReducersList = {
+    login: loginReducer
+}
+
+export interface LoginFormProps {
     onSuccess: () => void
 }
 
@@ -38,16 +43,12 @@ const LoginForm = ({ onSuccess }: LoginFormProps) => {
         }
     }, [dispatch, username, password, onSuccess])
 
-    let content
+    return (
+        <DynamicModuleLoader
+            removeAfterUnmount
+            reducers={initialReducers}
+        >
 
-    if (isLoading) {
-        content = (
-            <div className={styles.LoginForm}>
-                <AppPageLoader />
-            </div>
-        )
-    } else {
-        content = (
             <div className={styles.LoginForm}>
                 {errorMessage}
                 <div>
@@ -71,10 +72,8 @@ const LoginForm = ({ onSuccess }: LoginFormProps) => {
                     Login
                 </AppButton>
             </div>
-        )
-    }
-
-    return content
+        </DynamicModuleLoader>
+    )
 }
 
 export default LoginForm

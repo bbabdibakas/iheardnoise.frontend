@@ -44,7 +44,7 @@ const MainPage = () => {
                     Login
                 </AppButton>
             </AppHeader>
-            <LoginModal isOpen={isModalOpen} onClose={onModalClose} />
+            {isModalOpen && <LoginModal isOpen={isModalOpen} onClose={onModalClose} />}
             MainPage
             <Counter />
         </div>

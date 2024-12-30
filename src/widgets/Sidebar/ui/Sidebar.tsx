@@ -5,20 +5,21 @@ import MainPageIcon from 'shared/assets/icons/MainPage.svg'
 import MainPageActiveIcon from 'shared/assets/icons/MainPageActive.svg'
 import ProfilePageIcon from 'shared/assets/icons/ProfilePage.svg'
 import ProfilePageActiveIcon from 'shared/assets/icons/ProfilePageActive.svg'
+import { RoutePath } from 'app/providers/AppRouter'
 
 const Sidebar = () => {
     const location = useLocation()
 
     return (
         <div className={styles.Sidebar}>
-            <AppLink to={'/'} className={styles.link}>
-                {location.pathname === "/" ? <MainPageActiveIcon className={styles.icon} /> : <MainPageIcon className={styles.icon} />}
+            <AppLink to={RoutePath.main} className={styles.link}>
+                {location.pathname === RoutePath.main ? <MainPageActiveIcon className={styles.icon} /> : <MainPageIcon className={styles.icon} />}
                 <div>
                     Main
                 </div>
             </AppLink>
-            <AppLink to={'/profile'} className={styles.link}>
-                {location.pathname === "/profile" ? <ProfilePageActiveIcon className={styles.icon} /> : <ProfilePageIcon className={styles.icon} />}
+            <AppLink to={RoutePath.profile} className={styles.link}>
+                {location.pathname === RoutePath.profile ? <ProfilePageActiveIcon className={styles.icon} /> : <ProfilePageIcon className={styles.icon} />}
                 <div>
                     Profile
                 </div>
